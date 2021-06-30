@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { FileUploadControlComponent } from './components/file-upload-control/file-upload-control.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    FileUploadControlComponent
   ],
   imports: [
-    BrowserModule,
-    AppRoutingModule
+    BrowserModule
   ],
   providers: [],
   bootstrap: [AppComponent]
