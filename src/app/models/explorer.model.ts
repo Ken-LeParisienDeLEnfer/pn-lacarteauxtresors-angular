@@ -5,4 +5,5 @@ export class Explorer extends PointType {
     isBlocksExplorer: boolean = true;
     orientation?: string;
     moves?: string;
+    nbTresoursPicked?: number;
 }

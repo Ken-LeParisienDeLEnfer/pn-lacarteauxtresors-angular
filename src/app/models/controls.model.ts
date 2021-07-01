@@ -9,7 +9,7 @@ export class Controls {
     isCorrectTresours?: boolean;
     isTresoursInsideBounds?: boolean;
     isTresoursNotOnMountain?: boolean;
-    isOneExplorer?: boolean;
+    isAtLeastOneExplorer?: boolean;
     isCorrectExplorer?: boolean;
     isExplorerInsideBounds?: boolean;
     isExplorerNotOnMountain?: boolean;
