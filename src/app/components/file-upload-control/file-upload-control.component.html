@@ -1,3 +1,26 @@
 <div>
-    <p>Chargez votre fichier CSV pour lancer la Carte Aux Trésors !</p>
+    <p>Chargez votre fichier texte pour lancer la Carte Aux Trésors !</p>
+
+    <input type="file" accept=".txt" class="upload" (change)="changeFileListener($event)">
+
+</div>
+
+<div>
+    <ul>
+        <li><p>Fichier chargé : {{controls.isFileLoaded}}</p></li>
+        <li><p>Carte présente : {{controls.isAMap}}</p></li>
+        <li><p>Carte au bon format : {{controls.isACorrectMap}}</p></li>
+        <li><p>Montagne(s) présente(s): {{controls.isMountains}}</p></li>
+        <li><p>Montagne(s) au(x) bon(s) format(s): {{controls.isCorrectMountains}}</p></li>
+        <li><p>Montagne(s) placée(s) sur la carte: {{controls.isMountainsInsideBounds}}</p></li>
+        <li><p>Au moins un trésor présent: {{controls.isAtLeastOneTresour}}</p></li>
+        <li><p>Trésor(s) au(x) bon(s) format(s): {{controls.isCorrectTresours}}</p></li>
+        <li><p>Trésor(s) placé(s) sur la carte: {{controls.isTresoursInsideBounds}}</p></li>
+        <li><p>Aucun trésor placé sur une montagne: {{controls.isTresoursNotOnMountain}}</p></li>
+        <li><p>Un seul aventurier présent: {{controls.isOneExplorer}}</p></li>
+        <li><p>Aventurier correct: {{controls.isCorrectExplorer}}</p></li>
+        <li><p>Aventurier placé sur la carte: {{controls.isExplorerInsideBounds}}</p></li>
+        <li><p>Aucun aventurier placé sur une montagne: {{controls.isExplorerNotOnMountain}}</p></li>
+    </ul> 
+    
 </div>
