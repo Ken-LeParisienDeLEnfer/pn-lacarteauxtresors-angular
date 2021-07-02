@@ -1,7 +1,8 @@
 import { PointType } from './point-type.model';
 
 export class Point {
-    type?: PointType;
+    label?: string;
+    isBlocksExplorer?: boolean;
     x?: number;
     y?: number;
 }

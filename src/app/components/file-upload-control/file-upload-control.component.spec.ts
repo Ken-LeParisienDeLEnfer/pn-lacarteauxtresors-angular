@@ -49,22 +49,20 @@ describe('FileUploadControlComponent', () => {
   });
 
   it('should control that map is not defined', () => {
-    //console.log(data.ko_mapnotdefined)
     component.linesOriginalFile = data.ko_mapnotdefined;
     fixture.detectChanges();
 
-    component.controlFileData();
+    component.controlFileDataAndCreateCompleteMap();
 
     expect(component.controls.isAMap).toBeFalse();
     expect(component.controls.isACorrectMap).toBeUndefined();
   });
 
   it('should control that map is not correct because invalid coordinate', () => {
-    //console.log(data.ko_mapnotcorrectone)
     component.linesOriginalFile = data.ko_mapnotcorrectone;
     fixture.detectChanges();
 
-    component.controlFileData();
+    component.controlFileDataAndCreateCompleteMap();
 
     expect(component.controls.isAMap).toBeTrue();
     expect(component.controls.isACorrectMap).toBeFalse();
@@ -74,7 +72,7 @@ describe('FileUploadControlComponent', () => {
     component.linesOriginalFile = data.ko_mapnotcorrecttwo;
     fixture.detectChanges();
 
-    component.controlFileData();
+    component.controlFileDataAndCreateCompleteMap();
 
     expect(component.controls.isAMap).toBeTrue();
     expect(component.controls.isACorrectMap).toBeFalse();
@@ -84,7 +82,7 @@ describe('FileUploadControlComponent', () => {
     component.linesOriginalFile = data.ko_mapnotcorrectthree;
     fixture.detectChanges();
 
-    component.controlFileData();
+    component.controlFileDataAndCreateCompleteMap();
 
     expect(component.controls.isAMap).toBeTrue();
     expect(component.controls.isACorrectMap).toBeFalse();
@@ -94,7 +92,7 @@ describe('FileUploadControlComponent', () => {
     component.linesOriginalFile = data.ko_mapdefinedandcorrect;
     fixture.detectChanges();
 
-    component.controlFileData();
+    component.controlFileDataAndCreateCompleteMap();
 
     expect(component.controls.isAMap).toBeTrue();
     expect(component.controls.isACorrectMap).toBeTrue();
@@ -104,7 +102,7 @@ describe('FileUploadControlComponent', () => {
     component.linesOriginalFile = data.ok_mountainnotdefined;
     fixture.detectChanges();
 
-    component.controlFileData();
+    component.controlFileDataAndCreateCompleteMap();
 
     expect(component.controls.isMountains).toBeFalse();
     expect(component.controls.isCorrectMountains).toBeUndefined();
@@ -114,7 +112,7 @@ describe('FileUploadControlComponent', () => {
     component.linesOriginalFile = data.ko_mountainnotcorrectone;
     fixture.detectChanges();
 
-    component.controlFileData();
+    component.controlFileDataAndCreateCompleteMap();
 
     expect(component.controls.isMountains).toBeTrue();
     expect(component.controls.isCorrectMountains).toBeFalse();
@@ -124,7 +122,7 @@ describe('FileUploadControlComponent', () => {
     component.linesOriginalFile = data.ko_mountainnotcorrecttwo;
     fixture.detectChanges();
 
-    component.controlFileData();
+    component.controlFileDataAndCreateCompleteMap();
 
     expect(component.controls.isMountains).toBeTrue();
     expect(component.controls.isCorrectMountains).toBeFalse();
@@ -134,7 +132,7 @@ describe('FileUploadControlComponent', () => {
     component.linesOriginalFile = data.ko_mountainnotcorrectthree;
     fixture.detectChanges();
 
-    component.controlFileData();
+    component.controlFileDataAndCreateCompleteMap();
 
     expect(component.controls.isMountains).toBeTrue();
     expect(component.controls.isCorrectMountains).toBeFalse();
@@ -144,7 +142,7 @@ describe('FileUploadControlComponent', () => {
     component.linesOriginalFile = data.ok_mountaincorrectanddefined;
     fixture.detectChanges();
 
-    component.controlFileData();
+    component.controlFileDataAndCreateCompleteMap();
 
     expect(component.controls.isMountains).toBeTrue();
     expect(component.controls.isCorrectMountains).toBeTrue();
@@ -154,7 +152,7 @@ describe('FileUploadControlComponent', () => {
     component.linesOriginalFile = data.ok_mountainscorrectanddefined;
     fixture.detectChanges();
 
-    component.controlFileData();
+    component.controlFileDataAndCreateCompleteMap();
 
     expect(component.controls.isMountains).toBeTrue();
     expect(component.controls.isCorrectMountains).toBeTrue();
@@ -164,43 +162,40 @@ describe('FileUploadControlComponent', () => {
     component.linesOriginalFile = data.ko_tresournotdefined;
     fixture.detectChanges();
 
-    component.controlFileData();
+    component.controlFileDataAndCreateCompleteMap();
 
     expect(component.controls.isAtLeastOneTresour).toBeFalse();
     expect(component.controls.isCorrectTresours).toBeUndefined();
     expect(component.controls.isTresoursInsideBounds).toBeUndefined();
-    expect(component.controls.isTresoursNotOnMountain).toBeUndefined();
   });
 
   it('should control that tresour is not correct because invalid coordinates', () => {
     component.linesOriginalFile = data.ko_tresournotcorrect;
     fixture.detectChanges();
 
-    component.controlFileData();
+    component.controlFileDataAndCreateCompleteMap();
 
     expect(component.controls.isAtLeastOneTresour).toBeTrue();
     expect(component.controls.isCorrectTresours).toBeFalse();
     expect(component.controls.isTresoursInsideBounds).toBeUndefined();
-    expect(component.controls.isTresoursNotOnMountain).toBeUndefined();
   });
 
   it('should control that tresour is not correct because number of tresours not defined', () => {
     component.linesOriginalFile = data.ko_tresournotcorrecttwo;
     fixture.detectChanges();
 
-    component.controlFileData();
+    component.controlFileDataAndCreateCompleteMap();
 
     expect(component.controls.isAtLeastOneTresour).toBeTrue();
     expect(component.controls.isCorrectTresours).toBeFalse();
     expect(component.controls.isTresoursInsideBounds).toBeUndefined();
-    expect(component.controls.isTresoursNotOnMountain).toBeUndefined();
   });
 
   it('should control that tresour is not correct because missing separator', () => {
     component.linesOriginalFile = data.ko_tresournotcorrectthree;
     fixture.detectChanges();
 
-    component.controlFileData();
+    component.controlFileDataAndCreateCompleteMap();
 
     expect(component.controls.isAtLeastOneTresour).toBeTrue();
     expect(component.controls.isCorrectTresours).toBeFalse();
@@ -212,144 +207,218 @@ describe('FileUploadControlComponent', () => {
     component.linesOriginalFile = data.ko_tresournotcorrectfour;
     fixture.detectChanges();
 
-    component.controlFileData();
+    component.controlFileDataAndCreateCompleteMap();
 
     expect(component.controls.isAtLeastOneTresour).toBeTrue();
     expect(component.controls.isCorrectTresours).toBeFalse();
     expect(component.controls.isTresoursInsideBounds).toBeUndefined();
-    expect(component.controls.isTresoursNotOnMountain).toBeUndefined();
   });
 
   it('should control that tresour is correct', () => {
     component.linesOriginalFile = data.ok_tresourcorrect;
     fixture.detectChanges();
 
-    component.controlFileData();
+    component.controlFileDataAndCreateCompleteMap();
 
     expect(component.controls.isAtLeastOneTresour).toBeTrue();
     expect(component.controls.isCorrectTresours).toBeTrue();
-    expect(component.controls.isTresoursInsideBounds).toBeUndefined();
-    expect(component.controls.isTresoursNotOnMountain).toBeUndefined();
   });
 
   it('should control that all tresours are correct', () => {
     component.linesOriginalFile = data.ok_tresourscorrect;
     fixture.detectChanges();
 
-    component.controlFileData();
+    component.controlFileDataAndCreateCompleteMap();
 
     expect(component.controls.isAtLeastOneTresour).toBeTrue();
     expect(component.controls.isCorrectTresours).toBeTrue();
-    expect(component.controls.isTresoursInsideBounds).toBeUndefined();
-    expect(component.controls.isTresoursNotOnMountain).toBeUndefined();
   });
 
   it('should control that explorer is not defined', () => {
     component.linesOriginalFile = data.ko_explorernotdefined;
     fixture.detectChanges();
 
-    component.controlFileData();
+    component.controlFileDataAndCreateCompleteMap();
 
     expect(component.controls.isAtLeastOneExplorer).toBeFalse();
     expect(component.controls.isCorrectExplorer).toBeUndefined();
     expect(component.controls.isExplorerInsideBounds).toBeUndefined();
-    expect(component.controls.isExplorerNotOnMountain).toBeUndefined();
   });
 
   it('should control that explore is not correct because one element is missing', () => {
     component.linesOriginalFile = data.ko_explorernotcorrectone;
     fixture.detectChanges();
 
-    component.controlFileData();
+    component.controlFileDataAndCreateCompleteMap();
 
     expect(component.controls.isAtLeastOneExplorer).toBeTrue();
     expect(component.controls.isCorrectExplorer).toBeFalse();
     expect(component.controls.isExplorerInsideBounds).toBeUndefined();
-    expect(component.controls.isExplorerNotOnMountain).toBeUndefined();
   });
 
   it('should control that explore is not correct because first coordinate is not an integer', () => {
     component.linesOriginalFile = data.ko_explorernotcorrecttwo;
     fixture.detectChanges();
 
-    component.controlFileData();
+    component.controlFileDataAndCreateCompleteMap();
 
     expect(component.controls.isAtLeastOneExplorer).toBeTrue();
     expect(component.controls.isCorrectExplorer).toBeFalse();
     expect(component.controls.isExplorerInsideBounds).toBeUndefined();
-    expect(component.controls.isExplorerNotOnMountain).toBeUndefined();
   });
 
   it('should control that explore is not correct because second coordinate is not an integer', () => {
     component.linesOriginalFile = data.ko_explorernotcorrectthree;
     fixture.detectChanges();
 
-    component.controlFileData();
+    component.controlFileDataAndCreateCompleteMap();
 
     expect(component.controls.isAtLeastOneExplorer).toBeTrue();
     expect(component.controls.isCorrectExplorer).toBeFalse();
     expect(component.controls.isExplorerInsideBounds).toBeUndefined();
-    expect(component.controls.isExplorerNotOnMountain).toBeUndefined();
   });
 
   it('should control that explore is not correct because orientation not correct', () => {
     component.linesOriginalFile = data.ko_explorernotcorrectfour;
     fixture.detectChanges();
 
-    component.controlFileData();
+    component.controlFileDataAndCreateCompleteMap();
 
     expect(component.controls.isAtLeastOneExplorer).toBeTrue();
     expect(component.controls.isCorrectExplorer).toBeFalse();
     expect(component.controls.isExplorerInsideBounds).toBeUndefined();
-    expect(component.controls.isExplorerNotOnMountain).toBeUndefined();
   });
 
   it('should control that explore is not correct because directions not correct', () => {
     component.linesOriginalFile = data.ko_explorernotcorrectfive;
     fixture.detectChanges();
 
-    component.controlFileData();
+    component.controlFileDataAndCreateCompleteMap();
 
     expect(component.controls.isAtLeastOneExplorer).toBeTrue();
     expect(component.controls.isCorrectExplorer).toBeFalse();
     expect(component.controls.isExplorerInsideBounds).toBeUndefined();
-    expect(component.controls.isExplorerNotOnMountain).toBeUndefined();
   });
 
   it('should control that explore is not correct because name empty', () => {
     component.linesOriginalFile = data.ko_explorernotcorrectsix;
     fixture.detectChanges();
 
-    component.controlFileData();
+    component.controlFileDataAndCreateCompleteMap();
 
     expect(component.controls.isAtLeastOneExplorer).toBeTrue();
     expect(component.controls.isCorrectExplorer).toBeFalse();
     expect(component.controls.isExplorerInsideBounds).toBeUndefined();
-    expect(component.controls.isExplorerNotOnMountain).toBeUndefined();
   });
 
   it('should control that explore is correct', () => {
     component.linesOriginalFile = data.ok_explorercorrect;
     fixture.detectChanges();
 
-    component.controlFileData();
+    component.controlFileDataAndCreateCompleteMap();
 
     expect(component.controls.isAtLeastOneExplorer).toBeTrue();
     expect(component.controls.isCorrectExplorer).toBeTrue();
-    expect(component.controls.isExplorerInsideBounds).toBeUndefined();
-    expect(component.controls.isExplorerNotOnMountain).toBeUndefined();
   });
 
   it('should control that explores are correct', () => {
     component.linesOriginalFile = data.ok_explorerscorrect;
     fixture.detectChanges();
 
-    component.controlFileData();
+    component.controlFileDataAndCreateCompleteMap();
 
     expect(component.controls.isAtLeastOneExplorer).toBeTrue();
     expect(component.controls.isCorrectExplorer).toBeTrue();
-    expect(component.controls.isExplorerInsideBounds).toBeUndefined();
-    expect(component.controls.isExplorerNotOnMountain).toBeUndefined();
+  });
+
+  it('should control that mountain is out of bound', () => {
+    component.linesOriginalFile = data.ko_mountainoutofbounds;
+    fixture.detectChanges();
+
+    component.controlFileDataAndCreateCompleteMap();
+
+    expect(component.controls.isAtLeastOneExplorer).toBeTrue();
+    expect(component.controls.isCorrectExplorer).toBeTrue();
+    expect(component.controls.isAtLeastOneTresour).toBeTrue();
+    expect(component.controls.isCorrectTresours).toBeTrue();
+    expect(component.controls.isCorrectMountains).toBeTrue();
+    expect(component.controls.isAMap).toBeTrue();
+    expect(component.controls.isACorrectMap).toBeTrue();
+    expect(component.controls.isMountainsInsideBounds).toBeFalse();
+    expect(component.controls.isTresoursInsideBounds).toBeTrue();
+    expect(component.controls.isExplorerInsideBounds).toBeTrue();
+  });
+
+  it('should control that mountain is inside of bound', () => {
+    component.linesOriginalFile = data.ok_mountaininsidebounds;
+    fixture.detectChanges();
+
+    component.controlFileDataAndCreateCompleteMap();
+
+    expect(component.controls.isAtLeastOneExplorer).toBeTrue();
+    expect(component.controls.isCorrectExplorer).toBeTrue();
+    expect(component.controls.isAtLeastOneTresour).toBeTrue();
+    expect(component.controls.isCorrectTresours).toBeTrue();
+    expect(component.controls.isCorrectMountains).toBeTrue();
+    expect(component.controls.isAMap).toBeTrue();
+    expect(component.controls.isACorrectMap).toBeTrue();
+    expect(component.controls.isMountainsInsideBounds).toBeTrue();
+    expect(component.controls.isTresoursInsideBounds).toBeTrue();
+    expect(component.controls.isExplorerInsideBounds).toBeTrue();
+  });
+
+  it('should control that tresour is out of bound', () => {
+    component.linesOriginalFile = data.ko_tresouroutofbounds;
+    fixture.detectChanges();
+
+    component.controlFileDataAndCreateCompleteMap();
+
+    expect(component.controls.isAtLeastOneExplorer).toBeTrue();
+    expect(component.controls.isCorrectExplorer).toBeTrue();
+    expect(component.controls.isAtLeastOneTresour).toBeTrue();
+    expect(component.controls.isCorrectTresours).toBeTrue();
+    expect(component.controls.isCorrectMountains).toBeTrue();
+    expect(component.controls.isAMap).toBeTrue();
+    expect(component.controls.isACorrectMap).toBeTrue();
+    expect(component.controls.isMountainsInsideBounds).toBeTrue();
+    expect(component.controls.isTresoursInsideBounds).toBeFalse();
+    expect(component.controls.isExplorerInsideBounds).toBeTrue();
+  });
+
+  it('should control that explorer is out of bound', () => {
+    component.linesOriginalFile = data.ko_exploreroutofbounds;
+    fixture.detectChanges();
+
+    component.controlFileDataAndCreateCompleteMap();
+
+    expect(component.controls.isAtLeastOneExplorer).toBeTrue();
+    expect(component.controls.isCorrectExplorer).toBeTrue();
+    expect(component.controls.isAtLeastOneTresour).toBeTrue();
+    expect(component.controls.isCorrectTresours).toBeTrue();
+    expect(component.controls.isCorrectMountains).toBeTrue();
+    expect(component.controls.isAMap).toBeTrue();
+    expect(component.controls.isACorrectMap).toBeTrue();
+    expect(component.controls.isMountainsInsideBounds).toBeTrue();
+    expect(component.controls.isTresoursInsideBounds).toBeTrue();
+    expect(component.controls.isExplorerInsideBounds).toBeFalse();
+  });
+
+  it('should control that explorer is inside bound', () => {
+    component.linesOriginalFile = data.ok_explorerinsidebounds;
+    fixture.detectChanges();
+
+    component.controlFileDataAndCreateCompleteMap();
+
+    expect(component.controls.isAtLeastOneExplorer).toBeTrue();
+    expect(component.controls.isCorrectExplorer).toBeTrue();
+    expect(component.controls.isAtLeastOneTresour).toBeTrue();
+    expect(component.controls.isCorrectTresours).toBeTrue();
+    expect(component.controls.isCorrectMountains).toBeTrue();
+    expect(component.controls.isAMap).toBeTrue();
+    expect(component.controls.isACorrectMap).toBeTrue();
+    expect(component.controls.isMountainsInsideBounds).toBeTrue();
+    expect(component.controls.isTresoursInsideBounds).toBeTrue();
+    expect(component.controls.isExplorerInsideBounds).toBeTrue();
   });
 
 
