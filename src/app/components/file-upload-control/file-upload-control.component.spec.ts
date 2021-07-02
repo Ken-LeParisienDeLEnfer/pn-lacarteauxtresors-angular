@@ -56,6 +56,11 @@ describe('FileUploadControlComponent', () => {
 
     expect(component.controls.isAMap).toBeFalse();
     expect(component.controls.isACorrectMap).toBeUndefined();
+
+    fixture.detectChanges();
+
+    const controls = fixture.debugElement.queryAll(By.css('.control-ko'));
+    expect(controls[0].children[0].nativeElement.innerHTML).toContain('Carte présente');
   });
 
   it('should control that map is not correct because invalid coordinate', () => {
@@ -66,6 +71,11 @@ describe('FileUploadControlComponent', () => {
 
     expect(component.controls.isAMap).toBeTrue();
     expect(component.controls.isACorrectMap).toBeFalse();
+
+    fixture.detectChanges();
+
+    const controls = fixture.debugElement.queryAll(By.css('.control-ko'));
+    expect(controls[0].children[0].nativeElement.innerHTML).toContain('Carte au bon format');
   });
 
   it('should control that map is not correct because too many coordinates', () => {
@@ -76,6 +86,11 @@ describe('FileUploadControlComponent', () => {
 
     expect(component.controls.isAMap).toBeTrue();
     expect(component.controls.isACorrectMap).toBeFalse();
+
+    fixture.detectChanges();
+
+    const controls = fixture.debugElement.queryAll(By.css('.control-ko'));
+    expect(controls[0].children[0].nativeElement.innerHTML).toContain('Carte au bon format');
   });
 
   it('should control that map is not correct because no separator between map id and coordinates', () => {
@@ -86,6 +101,11 @@ describe('FileUploadControlComponent', () => {
 
     expect(component.controls.isAMap).toBeTrue();
     expect(component.controls.isACorrectMap).toBeFalse();
+
+    fixture.detectChanges();
+
+    const controls = fixture.debugElement.queryAll(By.css('.control-ko'));
+    expect(controls[0].children[0].nativeElement.innerHTML).toContain('Carte au bon format');
   });
 
   it('should control that map is defined and correct', () => {
@@ -105,7 +125,12 @@ describe('FileUploadControlComponent', () => {
     component.controlFileDataAndCreateCompleteMap();
 
     expect(component.controls.isMountains).toBeFalse();
-    expect(component.controls.isCorrectMountains).toBeUndefined();
+    expect(component.controls.isCorrectMountains).toBeUndefined();    
+
+    fixture.detectChanges();
+
+    const controls = fixture.debugElement.queryAll(By.css('.control-ko'));
+    expect(controls.length).toEqual(0);
   });
 
   it('should control that mountains is not correct because one has invalid coordinates', () => {
@@ -116,6 +141,11 @@ describe('FileUploadControlComponent', () => {
 
     expect(component.controls.isMountains).toBeTrue();
     expect(component.controls.isCorrectMountains).toBeFalse();
+
+    fixture.detectChanges();
+
+    const controls = fixture.debugElement.queryAll(By.css('.control-ko'));
+    expect(controls[0].children[0].nativeElement.innerHTML).toContain('Montagne(s) au(x) bon(s) format(s)');
   });
 
   it('should control that mountains is not correct because one has missing coordinates', () => {
@@ -126,6 +156,11 @@ describe('FileUploadControlComponent', () => {
 
     expect(component.controls.isMountains).toBeTrue();
     expect(component.controls.isCorrectMountains).toBeFalse();
+
+    fixture.detectChanges();
+
+    const controls = fixture.debugElement.queryAll(By.css('.control-ko'));
+    expect(controls[0].children[0].nativeElement.innerHTML).toContain('Montagne(s) au(x) bon(s) format(s)');
   });
 
   it('should control that mountains is not correct because one has not any separator', () => {
@@ -136,6 +171,11 @@ describe('FileUploadControlComponent', () => {
 
     expect(component.controls.isMountains).toBeTrue();
     expect(component.controls.isCorrectMountains).toBeFalse();
+
+    fixture.detectChanges();
+
+    const controls = fixture.debugElement.queryAll(By.css('.control-ko'));
+    expect(controls[0].children[0].nativeElement.innerHTML).toContain('Montagne(s) au(x) bon(s) format(s)');
   });
 
   it('should control that mountain is correct', () => {
@@ -145,7 +185,12 @@ describe('FileUploadControlComponent', () => {
     component.controlFileDataAndCreateCompleteMap();
 
     expect(component.controls.isMountains).toBeTrue();
-    expect(component.controls.isCorrectMountains).toBeTrue();
+    expect(component.controls.isCorrectMountains).toBeTrue();    
+
+    fixture.detectChanges();
+
+    const controls = fixture.debugElement.queryAll(By.css('.control-ko'));
+    expect(controls.length).toEqual(0);
   });
 
   it('should control that all mountains are correct', () => {
@@ -155,7 +200,12 @@ describe('FileUploadControlComponent', () => {
     component.controlFileDataAndCreateCompleteMap();
 
     expect(component.controls.isMountains).toBeTrue();
-    expect(component.controls.isCorrectMountains).toBeTrue();
+    expect(component.controls.isCorrectMountains).toBeTrue();    
+
+    fixture.detectChanges();
+
+    const controls = fixture.debugElement.queryAll(By.css('.control-ko'));
+    expect(controls.length).toEqual(0);
   });
 
   it('should control that tresour is not defined', () => {
@@ -166,7 +216,11 @@ describe('FileUploadControlComponent', () => {
 
     expect(component.controls.isAtLeastOneTresour).toBeFalse();
     expect(component.controls.isCorrectTresours).toBeUndefined();
-    expect(component.controls.isTresoursInsideBounds).toBeUndefined();
+
+    fixture.detectChanges();
+
+    const controls = fixture.debugElement.queryAll(By.css('.control-ko'));
+    expect(controls[0].children[0].nativeElement.innerHTML).toContain('Au moins un trésor présent');
   });
 
   it('should control that tresour is not correct because invalid coordinates', () => {
@@ -177,7 +231,11 @@ describe('FileUploadControlComponent', () => {
 
     expect(component.controls.isAtLeastOneTresour).toBeTrue();
     expect(component.controls.isCorrectTresours).toBeFalse();
-    expect(component.controls.isTresoursInsideBounds).toBeUndefined();
+
+    fixture.detectChanges();
+
+    const controls = fixture.debugElement.queryAll(By.css('.control-ko'));
+    expect(controls[0].children[0].nativeElement.innerHTML).toContain('Trésor(s) au(x) bon(s) format(s)');
   });
 
   it('should control that tresour is not correct because number of tresours not defined', () => {
@@ -188,7 +246,11 @@ describe('FileUploadControlComponent', () => {
 
     expect(component.controls.isAtLeastOneTresour).toBeTrue();
     expect(component.controls.isCorrectTresours).toBeFalse();
-    expect(component.controls.isTresoursInsideBounds).toBeUndefined();
+
+    fixture.detectChanges();
+
+    const controls = fixture.debugElement.queryAll(By.css('.control-ko'));
+    expect(controls[0].children[0].nativeElement.innerHTML).toContain('Trésor(s) au(x) bon(s) format(s)');
   });
 
   it('should control that tresour is not correct because missing separator', () => {
@@ -199,7 +261,11 @@ describe('FileUploadControlComponent', () => {
 
     expect(component.controls.isAtLeastOneTresour).toBeTrue();
     expect(component.controls.isCorrectTresours).toBeFalse();
-    expect(component.controls.isTresoursInsideBounds).toBeUndefined();
+
+    fixture.detectChanges();
+
+    const controls = fixture.debugElement.queryAll(By.css('.control-ko'));
+    expect(controls[0].children[0].nativeElement.innerHTML).toContain('Trésor(s) au(x) bon(s) format(s)');
     
   });
 
@@ -211,7 +277,11 @@ describe('FileUploadControlComponent', () => {
 
     expect(component.controls.isAtLeastOneTresour).toBeTrue();
     expect(component.controls.isCorrectTresours).toBeFalse();
-    expect(component.controls.isTresoursInsideBounds).toBeUndefined();
+
+    fixture.detectChanges();
+
+    const controls = fixture.debugElement.queryAll(By.css('.control-ko'));
+    expect(controls[0].children[0].nativeElement.innerHTML).toContain('Trésor(s) au(x) bon(s) format(s)');
   });
 
   it('should control that tresour is correct', () => {
@@ -222,6 +292,11 @@ describe('FileUploadControlComponent', () => {
 
     expect(component.controls.isAtLeastOneTresour).toBeTrue();
     expect(component.controls.isCorrectTresours).toBeTrue();
+
+    fixture.detectChanges();
+
+    const controlInsideBounds = fixture.debugElement.queryAll(By.css('.control-ko'));
+    expect(controlInsideBounds.length).toEqual(0);
   });
 
   it('should control that all tresours are correct', () => {
@@ -232,6 +307,11 @@ describe('FileUploadControlComponent', () => {
 
     expect(component.controls.isAtLeastOneTresour).toBeTrue();
     expect(component.controls.isCorrectTresours).toBeTrue();
+
+    fixture.detectChanges();
+
+    const controlInsideBounds = fixture.debugElement.queryAll(By.css('.control-ko'));
+    expect(controlInsideBounds.length).toEqual(0);
   });
 
   it('should control that explorer is not defined', () => {
@@ -242,7 +322,11 @@ describe('FileUploadControlComponent', () => {
 
     expect(component.controls.isAtLeastOneExplorer).toBeFalse();
     expect(component.controls.isCorrectExplorer).toBeUndefined();
-    expect(component.controls.isExplorerInsideBounds).toBeUndefined();
+
+    fixture.detectChanges();
+
+    const controls = fixture.debugElement.queryAll(By.css('.control-ko'));
+    expect(controls[0].children[0].nativeElement.innerHTML).toContain('Au moins un aventurier présent');
   });
 
   it('should control that explore is not correct because one element is missing', () => {
@@ -253,7 +337,11 @@ describe('FileUploadControlComponent', () => {
 
     expect(component.controls.isAtLeastOneExplorer).toBeTrue();
     expect(component.controls.isCorrectExplorer).toBeFalse();
-    expect(component.controls.isExplorerInsideBounds).toBeUndefined();
+
+    fixture.detectChanges();
+
+    const controls = fixture.debugElement.queryAll(By.css('.control-ko'));
+    expect(controls[0].children[0].nativeElement.innerHTML).toContain('Aventurier au bon format');
   });
 
   it('should control that explore is not correct because first coordinate is not an integer', () => {
@@ -264,7 +352,11 @@ describe('FileUploadControlComponent', () => {
 
     expect(component.controls.isAtLeastOneExplorer).toBeTrue();
     expect(component.controls.isCorrectExplorer).toBeFalse();
-    expect(component.controls.isExplorerInsideBounds).toBeUndefined();
+
+    fixture.detectChanges();
+
+    const controls = fixture.debugElement.queryAll(By.css('.control-ko'));
+    expect(controls[0].children[0].nativeElement.innerHTML).toContain('Aventurier au bon format');
   });
 
   it('should control that explore is not correct because second coordinate is not an integer', () => {
@@ -275,7 +367,11 @@ describe('FileUploadControlComponent', () => {
 
     expect(component.controls.isAtLeastOneExplorer).toBeTrue();
     expect(component.controls.isCorrectExplorer).toBeFalse();
-    expect(component.controls.isExplorerInsideBounds).toBeUndefined();
+
+    fixture.detectChanges();
+
+    const controls = fixture.debugElement.queryAll(By.css('.control-ko'));
+    expect(controls[0].children[0].nativeElement.innerHTML).toContain('Aventurier au bon format');
   });
 
   it('should control that explore is not correct because orientation not correct', () => {
@@ -286,7 +382,11 @@ describe('FileUploadControlComponent', () => {
 
     expect(component.controls.isAtLeastOneExplorer).toBeTrue();
     expect(component.controls.isCorrectExplorer).toBeFalse();
-    expect(component.controls.isExplorerInsideBounds).toBeUndefined();
+
+    fixture.detectChanges();
+
+    const controls = fixture.debugElement.queryAll(By.css('.control-ko'));
+    expect(controls[0].children[0].nativeElement.innerHTML).toContain('Aventurier au bon format');
   });
 
   it('should control that explore is not correct because directions not correct', () => {
@@ -297,7 +397,11 @@ describe('FileUploadControlComponent', () => {
 
     expect(component.controls.isAtLeastOneExplorer).toBeTrue();
     expect(component.controls.isCorrectExplorer).toBeFalse();
-    expect(component.controls.isExplorerInsideBounds).toBeUndefined();
+
+    fixture.detectChanges();
+
+    const controls = fixture.debugElement.queryAll(By.css('.control-ko'));
+    expect(controls[0].children[0].nativeElement.innerHTML).toContain('Aventurier au bon format');
   });
 
   it('should control that explore is not correct because name empty', () => {
@@ -308,7 +412,11 @@ describe('FileUploadControlComponent', () => {
 
     expect(component.controls.isAtLeastOneExplorer).toBeTrue();
     expect(component.controls.isCorrectExplorer).toBeFalse();
-    expect(component.controls.isExplorerInsideBounds).toBeUndefined();
+
+    fixture.detectChanges();
+
+    const controls = fixture.debugElement.queryAll(By.css('.control-ko'));
+    expect(controls[0].children[0].nativeElement.innerHTML).toContain('Aventurier au bon format');
   });
 
   it('should control that explore is correct', () => {
@@ -319,6 +427,11 @@ describe('FileUploadControlComponent', () => {
 
     expect(component.controls.isAtLeastOneExplorer).toBeTrue();
     expect(component.controls.isCorrectExplorer).toBeTrue();
+
+    fixture.detectChanges();
+
+    const controlInsideBounds = fixture.debugElement.queryAll(By.css('.control-ko'));
+    expect(controlInsideBounds.length).toEqual(0);
   });
 
   it('should control that explores are correct', () => {
@@ -329,6 +442,11 @@ describe('FileUploadControlComponent', () => {
 
     expect(component.controls.isAtLeastOneExplorer).toBeTrue();
     expect(component.controls.isCorrectExplorer).toBeTrue();
+
+    fixture.detectChanges();
+
+    const controlInsideBounds = fixture.debugElement.queryAll(By.css('.control-ko'));
+    expect(controlInsideBounds.length).toEqual(0);
   });
 
   it('should control that mountain is out of bound', () => {
@@ -347,6 +465,11 @@ describe('FileUploadControlComponent', () => {
     expect(component.controls.isMountainsInsideBounds).toBeFalse();
     expect(component.controls.isTresoursInsideBounds).toBeTrue();
     expect(component.controls.isExplorerInsideBounds).toBeTrue();
+
+    fixture.detectChanges();
+
+    const controlMountainInsideBounds = fixture.debugElement.queryAll(By.css('.control-ko'));
+    expect(controlMountainInsideBounds[0].children[0].nativeElement.innerHTML).toContain('Montagne(s) placée(s) sur la carte');
   });
 
   it('should control that mountain is inside of bound', () => {
@@ -359,12 +482,18 @@ describe('FileUploadControlComponent', () => {
     expect(component.controls.isCorrectExplorer).toBeTrue();
     expect(component.controls.isAtLeastOneTresour).toBeTrue();
     expect(component.controls.isCorrectTresours).toBeTrue();
+    expect(component.controls.isMountains).toBeTrue();
     expect(component.controls.isCorrectMountains).toBeTrue();
     expect(component.controls.isAMap).toBeTrue();
     expect(component.controls.isACorrectMap).toBeTrue();
     expect(component.controls.isMountainsInsideBounds).toBeTrue();
     expect(component.controls.isTresoursInsideBounds).toBeTrue();
     expect(component.controls.isExplorerInsideBounds).toBeTrue();
+
+    fixture.detectChanges();
+
+    const controlInsideBounds = fixture.debugElement.queryAll(By.css('.control-ko'));
+    expect(controlInsideBounds.length).toEqual(0);
   });
 
   it('should control that tresour is out of bound', () => {
@@ -377,12 +506,18 @@ describe('FileUploadControlComponent', () => {
     expect(component.controls.isCorrectExplorer).toBeTrue();
     expect(component.controls.isAtLeastOneTresour).toBeTrue();
     expect(component.controls.isCorrectTresours).toBeTrue();
+    expect(component.controls.isMountains).toBeTrue();
     expect(component.controls.isCorrectMountains).toBeTrue();
     expect(component.controls.isAMap).toBeTrue();
     expect(component.controls.isACorrectMap).toBeTrue();
     expect(component.controls.isMountainsInsideBounds).toBeTrue();
     expect(component.controls.isTresoursInsideBounds).toBeFalse();
     expect(component.controls.isExplorerInsideBounds).toBeTrue();
+
+    fixture.detectChanges();
+
+    const controlTresourInsideBounds = fixture.debugElement.queryAll(By.css('.control-ko'));
+    expect(controlTresourInsideBounds[0].children[0].nativeElement.innerHTML).toContain('Trésor(s) placé(s) sur la carte');
   });
 
   it('should control that explorer is out of bound', () => {
@@ -395,12 +530,18 @@ describe('FileUploadControlComponent', () => {
     expect(component.controls.isCorrectExplorer).toBeTrue();
     expect(component.controls.isAtLeastOneTresour).toBeTrue();
     expect(component.controls.isCorrectTresours).toBeTrue();
+    expect(component.controls.isMountains).toBeTrue();
     expect(component.controls.isCorrectMountains).toBeTrue();
     expect(component.controls.isAMap).toBeTrue();
     expect(component.controls.isACorrectMap).toBeTrue();
     expect(component.controls.isMountainsInsideBounds).toBeTrue();
     expect(component.controls.isTresoursInsideBounds).toBeTrue();
     expect(component.controls.isExplorerInsideBounds).toBeFalse();
+
+    fixture.detectChanges();
+
+    const controlExplorerInsideBounds = fixture.debugElement.queryAll(By.css('.control-ko'));
+    expect(controlExplorerInsideBounds[0].children[0].nativeElement.innerHTML).toContain('Aventurier placé sur la carte');
   });
 
   it('should control that explorer is inside bound', () => {
@@ -413,12 +554,18 @@ describe('FileUploadControlComponent', () => {
     expect(component.controls.isCorrectExplorer).toBeTrue();
     expect(component.controls.isAtLeastOneTresour).toBeTrue();
     expect(component.controls.isCorrectTresours).toBeTrue();
+    expect(component.controls.isMountains).toBeTrue();
     expect(component.controls.isCorrectMountains).toBeTrue();
     expect(component.controls.isAMap).toBeTrue();
     expect(component.controls.isACorrectMap).toBeTrue();
     expect(component.controls.isMountainsInsideBounds).toBeTrue();
     expect(component.controls.isTresoursInsideBounds).toBeTrue();
     expect(component.controls.isExplorerInsideBounds).toBeTrue();
+
+    fixture.detectChanges();
+
+    const controlExplorerInsideBounds = fixture.debugElement.queryAll(By.css('.control-ko'));
+    expect(controlExplorerInsideBounds.length).toEqual(0);
   });
 
 

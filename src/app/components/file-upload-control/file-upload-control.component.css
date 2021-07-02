@@ -1,0 +1,25 @@
+ul {
+    list-style-type: none;
+}
+
+li {
+    background-position: 0 0;
+    background-size: 1rem 1rem;
+    background-repeat: no-repeat;
+    padding-left: 2rem;
+}
+
+li.control-pending {
+    color: #A9A9A9;
+    background-image: url('/assets/img/undefined_sign.png');   
+}
+
+li.control-ok {
+    color: #00FF00;
+    background-image: url('/assets/img/true_sign.png');
+}
+
+li.control-ko {
+    color: #FF0000;
+    background-image: url('/assets/img/false_sign.png');
+}

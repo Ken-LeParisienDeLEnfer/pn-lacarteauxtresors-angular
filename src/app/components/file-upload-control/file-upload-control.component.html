@@ -6,19 +6,51 @@
 </div>
 
 <div>
-    <ul>
-        <li><p>Fichier chargé : {{controls.isFileLoaded}}</p></li>
-        <li><p>Carte présente : {{controls.isAMap}}</p></li>
-        <li><p>Carte au bon format : {{controls.isACorrectMap}}</p></li>
-        <li><p>Montagne(s) présente(s): {{controls.isMountains}}</p></li>
-        <li><p>Montagne(s) au(x) bon(s) format(s): {{controls.isCorrectMountains}}</p></li>
-        <li><p>Montagne(s) placée(s) sur la carte: {{controls.isMountainsInsideBounds}}</p></li>
-        <li><p>Au moins un trésor présent: {{controls.isAtLeastOneTresour}}</p></li>
-        <li><p>Trésor(s) au(x) bon(s) format(s): {{controls.isCorrectTresours}}</p></li>
-        <li><p>Trésor(s) placé(s) sur la carte: {{controls.isTresoursInsideBounds}}</p></li>
-        <li><p>Au moins un aventurier présent: {{controls.isAtLeastOneExplorer}}</p></li>
-        <li><p>Aventurier correct: {{controls.isCorrectExplorer}}</p></li>
-        <li><p>Aventurier placé sur la carte: {{controls.isExplorerInsideBounds}}</p></li>
+    <ul class="controls">
+        <li [ngClass]="{'control-ok': true === controls.isFileLoaded, 'control-ko': false === controls.isFileLoaded, 'control-pending': undefined === controls.isFileLoaded}">
+            <p>Fichier chargé
+            </p>
+        </li>
+        <li [ngClass]="{'control-ok': true === controls.isAMap, 'control-ko': false === controls.isAMap, 'control-pending': undefined === controls.isAMap}">
+            <p>Carte présente
+            </p>
+        </li>
+        <li [ngClass]="{'control-ok': true === controls.isACorrectMap, 'control-ko': false === controls.isACorrectMap, 'control-pending': undefined === controls.isACorrectMap}">
+            <p>Carte au bon format
+            </p>
+        </li>
+        <li *ngIf="true === controls.isMountains" [ngClass]="{'control-ok': true === controls.isCorrectMountains, 'control-ko': false === controls.isCorrectMountains, 'control-pending': undefined === controls.isCorrectMountains}">
+            <p>Montagne(s) au(x) bon(s) format(s)
+            </p>
+        </li>
+        <li [ngClass]="{'control-ok': true === controls.isAtLeastOneTresour, 'control-ko': false === controls.isAtLeastOneTresour, 'control-pending': undefined === controls.isAtLeastOneTresour}">
+            <p>Au moins un trésor présent
+            </p>
+        </li>
+        <li [ngClass]="{'control-ok': true === controls.isCorrectTresours, 'control-ko': false === controls.isCorrectTresours, 'control-pending': undefined === controls.isCorrectTresours}">
+            <p>Trésor(s) au(x) bon(s) format(s)
+            </p>
+        </li>
+        <li [ngClass]="{'control-ok': true === controls.isAtLeastOneExplorer, 'control-ko': false === controls.isAtLeastOneExplorer, 'control-pending': undefined === controls.isAtLeastOneExplorer}">
+            <p>Au moins un aventurier présent
+            </p>
+        </li>
+        <li [ngClass]="{'control-ok': true === controls.isCorrectExplorer, 'control-ko': false === controls.isCorrectExplorer, 'control-pending': undefined === controls.isCorrectExplorer}">
+            <p>Aventurier au bon format
+            </p>
+        </li>
+        <li *ngIf="true === controls.isMountains" [ngClass]="{'control-ok': true === controls.isMountainsInsideBounds, 'control-ko': false === controls.isMountainsInsideBounds, 'control-pending': undefined === controls.isMountainsInsideBounds}">
+            <p>Montagne(s) placée(s) sur la carte
+            </p>
+        </li>
+        <li [ngClass]="{'control-ok': true === controls.isTresoursInsideBounds, 'control-ko': false === controls.isTresoursInsideBounds, 'control-pending': undefined === controls.isTresoursInsideBounds}">
+            <p>Trésor(s) placé(s) sur la carte
+            </p>
+        </li>
+        <li [ngClass]="{'control-ok': true === controls.isExplorerInsideBounds, 'control-ko': false === controls.isExplorerInsideBounds, 'control-pending': undefined === controls.isExplorerInsideBounds}">
+            <p>Aventurier placé sur la carte
+            </p>
+        </li>
     </ul> 
     
 </div>
